@@ -1,4 +1,17 @@
 import React from "react";
+import ListIcon from "@mui/icons-material/List";
+import WorkIcon from "@mui/icons-material/Work";
+import SchoolIcon from "@mui/icons-material/School";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import StarIcon from "@mui/icons-material/Star";
+
+const iconMap = {
+  list: <ListIcon />,
+  work: <WorkIcon />,
+  school: <SchoolIcon />,
+  favorite: <FavoriteIcon />,
+  star: <StarIcon />,
+};
 
 function Sidebar({ setCurrentPage, lists }) {
   return (
@@ -12,15 +25,31 @@ function Sidebar({ setCurrentPage, lists }) {
       </div>
 
       {lists.map((list) => (
-        <div key={list.id} style={styles.menuItem}>
-          {list.name}
+        <div
+          key={list.id}
+          style={{
+            ...styles.menuItem,
+            display: "flex",
+            gap: "10px",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              width: "10px",
+              height: "10px",
+              borderRadius: "50%",
+              background: list.color,
+            }}
+          />
+
+          {iconMap[list.icon]}
+
+          <span>{list.name}</span>
         </div>
       ))}
 
-      <div
-        style={styles.menuItem}
-        onClick={() => setCurrentPage("add-list")}
-      >
+      <div style={styles.menuItem} onClick={() => setCurrentPage("add-list")}>
         + Add New List
       </div>
     </div>

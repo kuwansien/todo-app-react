@@ -6,17 +6,17 @@ function App() {
   const [lists, setLists] = useState([]);
   const [currentPage, setCurrentPage] = useState("home");
 
-  const addList = (name) => {
-    const newList = {
-      id: Date.now(),
-      name: name,
-      color: "#2196F3",
-      icon: "list",
-    };
-
-    setLists([...lists, newList]);
-    setCurrentPage("home");
+const addList = (name, color, icon) => {
+  const newList = {
+    id: Date.now(),
+    name,
+    color,
+    icon,
   };
+
+  setLists([...lists, newList]);
+  setCurrentPage("home");
+};
 
   return (
     <div style={{ display: "flex" }}>
