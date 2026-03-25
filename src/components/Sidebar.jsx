@@ -13,7 +13,7 @@ const iconMap = {
   star: <StarIcon />,
 };
 
-function Sidebar({ setCurrentPage, lists }) {
+function Sidebar({ setCurrentPage, lists, setSelectedList }) {
   return (
     <div style={styles.sidebar}>
       <h2>TODO</h2>
@@ -27,6 +27,10 @@ function Sidebar({ setCurrentPage, lists }) {
       {lists.map((list) => (
         <div
           key={list.id}
+          onClick={() => {
+            setSelectedList(list);
+            setCurrentPage("todo");
+          }}
           style={{
             ...styles.menuItem,
             display: "flex",
